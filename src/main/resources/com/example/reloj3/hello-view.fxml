@@ -29,7 +29,7 @@
                      <font>
                         <Font size="32.0" />
                      </font></Button>
-                  <Button mnemonicParsing="false" prefHeight="66.0" prefWidth="179.0" text="ON/OFF" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Button fx:id="onOffButton" mnemonicParsing="false" onAction="#onHelloButtonClick" prefHeight="66.0" prefWidth="179.0" text="ON/OFF" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -43,9 +43,9 @@
             </GridPane>
          </children>
       </Pane>
-      <Label fx:id="reloj" alignment="CENTER" contentDisplay="CENTER" prefHeight="187.0" prefWidth="363.0" text="00:00" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label fx:id="relojLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="218.0" prefWidth="421.0" text="00:00:00" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
-            <Font size="130.0" />
+            <Font size="96.0" />
          </font>
       </Label>
    </children>
