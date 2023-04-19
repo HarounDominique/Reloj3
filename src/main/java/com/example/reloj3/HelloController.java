@@ -1,15 +1,18 @@
 package com.example.reloj3;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class HelloController {
     private boolean relojEncendido = false;
+    private boolean modo24horas = true;
     private Reloj reloj;
 
     @FXML
@@ -17,43 +20,63 @@ public class HelloController {
 
     @FXML
     private Button onOffButton;
+    @FXML
+    private Button onChangeModoHoras;
+
 
     @FXML
-    protected void onHelloButtonClick() {
+    protected void onOnOffButtonClick() {
         if (relojEncendido) {
             relojEncendido = false;
-            onOffButton.setText("Encender");
+            onOffButton.setText("ON");
             reloj.detener();
         } else {
             relojEncendido = true;
-            onOffButton.setText("Apagar");
+            onOffButton.setText("OFF");
             reloj = new Reloj();
             reloj.iniciar();
         }
     }
 
-    private class Reloj extends Thread {
-        private boolean ejecutando = false;
+    @FXML
+    protected void cambiarModoHora() {
+        if(modo24horas){
+            modo24horas = false;
+            onChangeModoHoras.setText("24h");
+        }else{
+            modo24horas = true;
+            onChangeModoHoras.setText("12h");
+        }
+    }
+
+    private class Reloj extends Thread implements Serializable {
+        private boolean relojFuncionando = false;
 
         public void iniciar() {
-            ejecutando = true;
+            relojFuncionando = true;
             this.start();
         }
 
         public void detener() {
-            ejecutando = false;
+            relojFuncionando = false;
         }
 
         @Override
         public void run() {
-            while (ejecutando) {
+            while (relojFuncionando) {
                 try {
                     sleep(1000);
                     Platform.runLater(() -> {
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-                        relojLabel.setText(LocalDateTime.now().format(formatter));
+                        if(modo24horas) {
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+                            relojLabel.setText(LocalDateTime.now().format(formatter));
+                        }else{
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+                            relojLabel.setText(LocalDateTime.now().format(formatter));
+                        }
                     });
                 } catch (InterruptedException e) {
+                    System.out.println("El reloj se ha detenido inesperadamente.");
                     e.printStackTrace();
                 }
             }

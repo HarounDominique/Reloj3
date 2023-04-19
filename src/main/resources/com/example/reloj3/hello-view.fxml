@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="267.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reloj3.HelloController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reloj3.HelloController">
   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="419.0" minWidth="10.0" prefWidth="419.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="181.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="619.0" minWidth="10.0" prefWidth="426.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="436.0" minWidth="10.0" prefWidth="213.0" />
   </columnConstraints>
   <rowConstraints>
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="283.0" minHeight="10.0" prefHeight="275.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <GridPane layoutY="-2.0" prefHeight="267.0" prefWidth="213.0">
               <columnConstraints>
@@ -25,28 +27,64 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="176.0" text="12/24" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Button fx:id="onChangeModoHoras" mnemonicParsing="false" onAction="#cambiarModoHora" prefHeight="67.0" prefWidth="176.0" text="24h" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <font>
-                        <Font size="32.0" />
+                        <Font size="40.0" />
                      </font></Button>
-                  <Button fx:id="onOffButton" mnemonicParsing="false" onAction="#onHelloButtonClick" prefHeight="66.0" prefWidth="179.0" text="ON/OFF" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Button fx:id="onOffButton" mnemonicParsing="false" onAction="#onOnOffButtonClick" prefHeight="66.0" prefWidth="179.0" text="ON" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
-                        <Font size="36.0" />
+                        <Font size="40.0" />
                      </font>
                   </Button>
                   <Button mnemonicParsing="false" prefHeight="66.0" prefWidth="177.0" text="ALARM" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <font>
-                        <Font size="36.0" />
+                        <Font size="38.0" />
                      </font>
                   </Button>
                </children>
             </GridPane>
          </children>
       </Pane>
-      <Label fx:id="relojLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="218.0" prefWidth="421.0" text="00:00:00" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label fx:id="relojLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="178.0" prefWidth="357.0" text="00:00:00" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
-            <Font size="96.0" />
+            <Font size="60.0" />
          </font>
       </Label>
+      <GridPane>
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="274.0" minWidth="10.0" prefWidth="149.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="274.0" minWidth="10.0" prefWidth="131.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="17.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.0" minWidth="10.0" prefWidth="131.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField alignment="CENTER_RIGHT" prefWidth="55.0" text="00" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="40.0" right="5.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="24.0" />
+               </font></TextField>
+            <TextField text="00" GridPane.columnIndex="3">
+               <GridPane.margin>
+                  <Insets left="5.0" right="40.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="24.0" />
+               </font></TextField>
+            <Label text=":" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+               <font>
+                  <Font size="34.0" />
+               </font></Label>
+            <Label text="ALARMA:" GridPane.halignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
    </children>
 </GridPane>
