@@ -3,6 +3,7 @@ package com.example.reloj3;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -81,5 +82,11 @@ public class HelloController {
                 }
             }
         }
+
+        //COnstructor vacío necesario para que pueda emplearse como un componente y reutilizarse
+        public Reloj() {
+
+        }
+
     }
 }

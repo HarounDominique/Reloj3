@@ -36,11 +36,11 @@
                         <Font size="40.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="66.0" prefWidth="177.0" text="ALARM" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <CheckBox mnemonicParsing="false" text="ALARM" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <font>
-                        <Font size="38.0" />
+                        <Font size="35.0" />
                      </font>
-                  </Button>
+                  </CheckBox>
                </children>
             </GridPane>
          </children>
