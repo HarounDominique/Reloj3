@@ -5,10 +5,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class HelloController {
@@ -20,10 +23,37 @@ public class HelloController {
     private Label relojLabel;
 
     @FXML
+    private CheckBox checkBoxAlarm;
+
+    @FXML
+    private TextField minutos;
+
+    @FXML
+    private TextField hora;
+
+    @FXML
     private Button onOffButton;
     @FXML
     private Button onChangeModoHoras;
 
+
+    @FXML
+    protected void onOnOffAlarmClick() {
+        if(relojEncendido){
+            if (checkBoxAlarm.isSelected()) {
+
+                    LocalTime horaAlarma = LocalTime.of(Integer.parseInt(hora.getText()), Integer.parseInt(minutos.getText()), 00);
+                    if(horaAlarma.equals(LocalTime.parse(relojLabel.getText()))){
+                        for(int i = 0; i<100; i++){
+                            System.out.println("ALARMA");
+                        }
+                    }
+
+            } else {
+                System.out.println("Alarma apagada.");
+            }
+        }
+    }
 
     @FXML
     protected void onOnOffButtonClick() {

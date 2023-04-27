@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reloj3.HelloController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reloj3.HelloController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="619.0" minWidth="10.0" prefWidth="426.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="436.0" minWidth="10.0" prefWidth="213.0" />
@@ -36,7 +36,7 @@
                         <Font size="40.0" />
                      </font>
                   </Button>
-                  <CheckBox mnemonicParsing="false" text="ALARM" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <CheckBox fx:id="checkBoxAlarm" mnemonicParsing="false" onAction="#onOnOffAlarmClick" text="ALARM" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <font>
                         <Font size="35.0" />
                      </font>
@@ -61,14 +61,14 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField alignment="CENTER_RIGHT" prefWidth="55.0" text="00" GridPane.columnIndex="1">
+            <TextField fx:id="hora" alignment="CENTER_RIGHT" prefWidth="55.0" text="00" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="40.0" right="5.0" />
                </GridPane.margin>
                <font>
                   <Font size="24.0" />
                </font></TextField>
-            <TextField text="00" GridPane.columnIndex="3">
+            <TextField fx:id="minutos" text="00" GridPane.columnIndex="3">
                <GridPane.margin>
                   <Insets left="5.0" right="40.0" />
                </GridPane.margin>
