@@ -13,6 +13,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
 
 public class HelloController {
     private boolean relojEncendido = false;
@@ -39,15 +40,17 @@ public class HelloController {
 
     @FXML
     protected void onOnOffAlarmClick() {
-        if(relojEncendido){
+        if (relojEncendido) {
             if (checkBoxAlarm.isSelected()) {
-
-                    LocalTime horaAlarma = LocalTime.of(Integer.parseInt(hora.getText()), Integer.parseInt(minutos.getText()), 00);
-                    if(horaAlarma.equals(LocalTime.parse(relojLabel.getText()))){
-                        for(int i = 0; i<100; i++){
-                            System.out.println("ALARMA");
-                        }
+                System.out.println("Alarma encendida.");
+                LocalTime horaAlarma = LocalTime.of(Integer.parseInt(hora.getText()), Integer.parseInt(minutos.getText()), 00);
+//                System.out.println ("hora alarma"+ horaAlarma );
+//                System.out.println ("hora reloj"+ LocalTime.parse(relojLabel.getText() ));
+                if (horaAlarma.equals(LocalTime.parse(relojLabel.getText()))) {
+                    for (int i = 0; i < 100; i++) {
+                        System.out.println("ALARMA");
                     }
+                }
 
             } else {
                 System.out.println("Alarma apagada.");
@@ -71,10 +74,10 @@ public class HelloController {
 
     @FXML
     protected void cambiarModoHora() {
-        if(modo24horas){
+        if (modo24horas) {
             modo24horas = false;
             onChangeModoHoras.setText("24h");
-        }else{
+        } else {
             modo24horas = true;
             onChangeModoHoras.setText("12h");
         }
@@ -98,12 +101,47 @@ public class HelloController {
                 try {
                     sleep(1000);
                     Platform.runLater(() -> {
-                        if(modo24horas) {
+                        if (modo24horas) {
                             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
                             relojLabel.setText(LocalDateTime.now().format(formatter));
-                        }else{
+                            if (checkBoxAlarm.isSelected()) {
+                                LocalTime horaAlarma = LocalTime.of(Integer.parseInt(hora.getText()), Integer.parseInt(minutos.getText()), 00);
+
+                                if (horaAlarma.equals(LocalTime.parse(relojLabel.getText()))) {
+                                    for (int i = 0; i < 50; i++) {
+                                        System.out.println("ALARMA");
+                                        /*
+                                        try {
+                                            TimeUnit.SECONDS.sleep(1);
+                                        } catch (InterruptedException e) {
+                                            throw new RuntimeException(e);
+                                        }
+                                         */
+                                    }
+                                }
+                            } else {
+                            }
+
+                        } else {
                             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
                             relojLabel.setText(LocalDateTime.now().format(formatter));
+                            if (checkBoxAlarm.isSelected()) {
+                                LocalTime horaAlarma = LocalTime.of(Integer.parseInt(hora.getText()), Integer.parseInt(minutos.getText()), 00);
+                                if (horaAlarma.equals(LocalTime.parse(relojLabel.getText()))) {
+                                    for (int i = 0; i < 50; i++) {
+                                        System.out.println("ALARMA");
+                                        /*
+                                        try {
+                                            TimeUnit.SECONDS.sleep(1);
+                                        } catch (InterruptedException e) {
+                                            throw new RuntimeException(e);
+                                        }
+                                         */
+                                    }
+                                }
+
+                            } else {
+                            }
                         }
                     });
                 } catch (InterruptedException e) {
