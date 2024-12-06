@@ -79,7 +79,7 @@
                <font>
                   <Font size="34.0" />
                </font></Label>
-            <Label text="ALARMA:" GridPane.halignment="CENTER">
+            <Label text="ALARM:" GridPane.halignment="CENTER">
                <font>
                   <Font size="24.0" />
                </font>
